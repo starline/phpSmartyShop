@@ -1,0 +1,67 @@
+; Пример конфигурации GoodGin / SmartyShop
+;
+; Скопируйте этот файл в config.php и подставьте свои значения:
+;   copy config.php.example config.php   (Windows / cmd)
+;   cp config.php.example config.php     (Linux / macOS)
+;
+; Формат — INI (ключ = значение), как ожидает GoodGin\Config и parse_ini_file().
+; Строки с паролями и секретами можно заключить в двойные кавычки, если внутри есть пробелы или спецсимволы.
+;
+; root_url, root_dir, protocol и пути к модулям задаются в коде автоматически — их здесь нет.
+
+; --- База данных (MySQL / MariaDB) ---
+db_server = localhost
+db_user = store
+db_password = "change_me"
+db_name = store
+; Префикс имён таблиц в SQL-шаблонах (__tablename -> s_tablename при db_prefix = s_)
+db_prefix = s_
+
+; Кодировка подключения (пусто = не вызывать SET NAMES)
+db_charset = utf8mb4
+
+; Режим SQL для сессии (пусто = не задавать). Пример для совместимости со старыми дампами:
+; db_sql_mode = NO_AUTO_VALUE_ON_ZERO
+db_sql_mode =
+
+; Часовой пояс MySQL (пусто = не задавать). Пример: +00:00 или Europe/Kyiv
+db_timezone =
+
+; --- Безопасность и сессии ---
+; Соль для хэшей и токенов (замените на случайные длинные строки)
+salt = change_this_random_salt_string_1
+salt_psw = change_this_random_salt_string_2
+; Префикс имён cookie сайта
+cookie_prefix = gg_
+
+; --- PHP ---
+; Часовой пояс PHP (пусто = системный по умолчанию). Пример: Europe/Kyiv
+php_timezone = Europe/Kyiv
+; 1 — показывать ошибки на витрине/админке (только для разработки)
+php_debug = 0
+
+; --- Smarty ---
+smarty_caching = 0
+smarty_cache_lifetime = 3600
+smarty_debugging = 0
+smarty_compile_check = 1
+smarty_html_minify = 0
+
+; --- Изображения (пути относительно корня сайта) ---
+images_originals_dir = files/originals/
+images_resized_dir = files/products/
+images_brands_dir = files/brands/
+images_watermark_file = files/watermark/watermark.png
+; Максимальная сторона превью (пиксели)
+images_max_size = 1200
+; 1 — использовать Imagick, если расширение доступно
+images_use_imagick = 0
+; Качество JPEG/WebP (1–100), пусто — по умолчанию движка
+images_quality = 85
+
+; --- reCAPTCHA (секретный ключ сервера; пусто — если не используете) ---
+rc_private_key =
+
+; --- Telegram-бот (уведомления; пусто — если не настраивали) ---
+telegram_bot_api_key =
+telegram_bot_name =
